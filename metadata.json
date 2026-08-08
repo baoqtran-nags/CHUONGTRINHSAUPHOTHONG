@@ -1,0 +1,6 @@
+{
+  "name": "Curriculum Analytics & Checklist System",
+  "description": "Interactive analytical dashboard and checklist for Vietnamese vocational curriculum frameworks (Trung cấp & Cao đẳng), theory/practice distribution, credit audits, and status tracking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
