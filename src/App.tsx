@@ -20,11 +20,12 @@ import { AuditReportModal } from './components/AuditReportModal';
 import { AiCurriculumAdvisor } from './components/AiCurriculumAdvisor';
 import { Moet2026AuditPanel } from './components/Moet2026AuditPanel';
 import { LmsOnlinePanel } from './components/LmsOnlinePanel';
+import { MajorsCatalogPanel } from './components/MajorsCatalogPanel';
 
 export default function App() {
   const [currentProgram, setCurrentProgram] = useState<ProgramCurriculum>(SAMPLE_TRUNG_CAP_PROGRAM);
   const [activeSheetName, setActiveSheetName] = useState<string>('Khung Chương Trình Trung Cấp');
-  const [activeTab, setActiveTab] = useState<'checklist' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor'>('checklist');
+  const [activeTab, setActiveTab] = useState<'checklist' | 'majors_list' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor'>('checklist');
 
   // Modals
   const [isModuleModalOpen, setIsModuleModalOpen] = useState(false);
@@ -209,6 +210,16 @@ export default function App() {
             }}
             onDeleteModule={handleDeleteModule}
             onQuickStatusChange={handleQuickStatusChange}
+          />
+        )}
+
+        {activeTab === 'majors_list' && (
+          <MajorsCatalogPanel
+            onSelectMajorToLoad={(loadedProgram) => {
+              setCurrentProgram(loadedProgram);
+              setActiveSheetName(Object.keys(loadedProgram.sheets)[0] || '');
+            }}
+            onSwitchToTab={(targetTab) => setActiveTab(targetTab)}
           />
         )}
 

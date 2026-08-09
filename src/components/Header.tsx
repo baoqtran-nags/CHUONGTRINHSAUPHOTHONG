@@ -11,7 +11,8 @@ import {
   Award,
   RefreshCw,
   ShieldCheck,
-  Laptop
+  Laptop,
+  GraduationCap
 } from 'lucide-react';
 import { ProgramCurriculum } from '../types';
 
@@ -22,8 +23,8 @@ interface HeaderProps {
   onExportExcel: () => void;
   activeSheet: string;
   onSheetChange: (sheetName: string) => void;
-  activeTab: 'checklist' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor';
-  onTabChange: (tab: 'checklist' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor') => void;
+  activeTab: 'checklist' | 'majors_list' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor';
+  onTabChange: (tab: 'checklist' | 'majors_list' | 'moet_2026' | 'lms_online' | 'analytics' | 'comparison' | 'ai_advisor') => void;
   onOpenAuditModal: () => void;
   onReset: () => void;
 }
@@ -175,6 +176,18 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <BookOpen className="w-3.5 h-3.5" />
             <span>Checklist & Danh Sách Mô-đun</span>
+          </button>
+
+          <button
+            onClick={() => onTabChange('majors_list')}
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded transition-colors ${
+              activeTab === 'majors_list'
+                ? 'bg-blue-600 text-white font-bold'
+                : 'text-sky-300 hover:text-sky-200 hover:bg-slate-800'
+            }`}
+          >
+            <GraduationCap className="w-3.5 h-3.5 text-sky-400" />
+            <span>🎓 Ngành Đào Tạo & Khung Môn</span>
           </button>
 
           <button
